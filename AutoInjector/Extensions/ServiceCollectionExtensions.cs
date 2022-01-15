@@ -4,8 +4,6 @@ namespace AutoInjector.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    internal static Action<IocOptions> OptionsDelegate { get; private set; }
-
     /// <summary>
     /// Add or replace dependency in container
     /// </summary>
@@ -26,15 +24,5 @@ public static class ServiceCollectionExtensions
         }
             
         serviceCollection.Add(new ServiceDescriptor(typeof(TInterface), typeof(TImplementation), lifetime));
-    }
-
-    /// <summary>
-    /// Add autoInjector options to DI
-    /// </summary>
-    /// <param name="serviceCollection">di-container</param>
-    /// <param name="options">delegate for set options</param>
-    public static void AddAutoInjector(this IServiceCollection serviceCollection, Action<IocOptions> options)
-    {
-        OptionsDelegate += options;
-    }        
+    }    
 }
